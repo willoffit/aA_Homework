@@ -32,20 +32,34 @@ class Simon
 
   def require_sequence
 
+    i = 0
+    while i < self.sequence_length
+      puts "Here is the current sequence: #{self.seq}"
+      sleep(2)
+      puts "Please guess the sequence."
+      print "> "
+      input = gets.chomp
+
+      if input != self.seq
+        self.game_over = true
+      end
+
+      i += 1
+    end
+
   end
 
   def add_random_color
     random_color = COLORS.sample
     seq << random_color
-
   end
 
   def round_success_message
-
+    puts "Correct guess."
   end
 
   def game_over_message
-
+    puts "You have lost."
   end
 
   def reset_game
